@@ -21,23 +21,28 @@ Copyright (c) 2023, Gary Pui-Tung Choi
 ===============================================================
 
 Usage:
-* [map,map_planar] = multiply_connected_quasiconformal_map(v1,f1,bdy1_all,blm1_all,ilm1,v2,f2,bdy2_all,blm2_all,ilm2)
+* `[map,map_planar] = multiply_connected_quasiconformal_map(v1,f1,bdy1_all,blm1_all,ilm1,v2,f2,bdy2_all,blm2_all,ilm2)`
 
 Input:
-* v1: nv1 x 2 or 3 vertex coordinates of shape 1
-* f1: nf1 x 3 triangulations of shape 1
-* bdy1_all: a cell array with each cell containg vertex indices of a boundary curve of shape 1
-* blm1_all: a cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 1
-* ilm1: indices of interior landmarks of shape 1
-* v2: nv1 x 2 or 3 vertex coordinates of shape 2
-* f2: nf1 x 3 triangulations of shape 2
-* bdy2_all: a cell array with each cell containing vertex indices of a boundary curve of shape 2
-* blm2_all: a cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 2
-* ilm2: indices of interior landmarks of shape 2
+* `v1`: nv1 x 2 or 3 vertex coordinates of shape 1
+* `f1`: nf1 x 3 triangulations of shape 1
+* `bdy1_all`: a cell array with each cell containing vertex indices of a boundary curve of shape 1
+* `blm1_all`: a cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 1
+* `ilm1`: indices of interior landmarks of shape 1
+* `v2`: nv1 x 2 or 3 vertex coordinates of shape 2
+* `f2`: nf1 x 3 triangulations of shape 2
+* `bdy2_all`: a cell array with each cell containing vertex indices of a boundary curve of shape 2
+* `blm2_all`: a cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 2
+* `ilm2`: indices of interior landmarks of shape 2
 
 Output:
-* map: nv1 x 2 or 3 vertex coordinates of the resulting quasiconformal map
-* map_planar: nv1 x 2 vertex coordinates of the quasiconformal map on the plane
+* `map`: nv1 x 2 or 3 vertex coordinates of the resulting quasiconformal map
+* `map_planar`: nv1 x 2 vertex coordinates of the quasiconformal map on the plane
+
+================================================================
+
+Remarks:
+* The `meshboundaries` function can be used for finding the boundaries of the two input surfaces. However, please make sure that the boundaries and the landmarks are in correct order.
 
 ================================================================
 

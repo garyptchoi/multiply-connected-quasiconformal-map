@@ -7,17 +7,13 @@ function [map, map_planar] = multiply_connected_quasiconformal_map(v1,f1,bdy1_al
 % Input:
 % v1: nv1 x 2 or 3 vertex coordinates of shape 1
 % f1: nf1 x 3 triangulations of shape 1
-% bdy1_all: a cell array with each cell containg vertex indices of a 
-%             boundary curve of shape 1
-% blm1_all: a cell array with each cell containing vertex indices of 
-%           boundary landmarks on the k-th boundary curve of shape 1
+% bdy1_all: a 1 x k cell array with each cell containing vertex indices of a boundary curve of shape 1
+% blm1_all: a 1 x k cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 1
 % ilm1: indices of interior landmarks of shape 1
 % v2: nv1 x 2 or 3 vertex coordinates of shape 2
 % f2: nf1 x 3 triangulations of shape 2
-% bdy2_all: a cell array with each cell containing vertex indices of a 
-%           boundary curve of shape 2
-% blm2_all: a cell array with each cell containing vertex indices of 
-%           boundary landmarks on the k-th boundary curve of shape 2
+% bdy2_all: a 1 x k cell array with each cell containing vertex indices of a boundary curve of shape 2
+% blm2_all: a 1 x k cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 2
 % ilm2: indices of interior landmarks of shape 2
 %
 % Output:
@@ -27,8 +23,7 @@ function [map, map_planar] = multiply_connected_quasiconformal_map(v1,f1,bdy1_al
 % If you use this code in your own work, please cite the following papers:
 %
 % [1] G. P. T. Choi, 
-%     "Efficient Conformal Parameterization of Multiply-Connected Surfaces
-%      Using Quasi-Conformal Theory".
+%     "Efficient Conformal Parameterization of Multiply-Connected Surfaces Using Quasi-Conformal Theory".
 %     Journal of Scientific Computing, 87(3), 70, 2021.
 % 
 % [2] G. P. T. Choi and L. Mahadevan, 

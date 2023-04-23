@@ -26,13 +26,13 @@ Usage:
 Input:
 * `v1`: nv1 x 2 or 3 vertex coordinates of shape 1
 * `f1`: nf1 x 3 triangulations of shape 1
-* `bdy1_all`: a cell array with each cell containing vertex indices of a boundary curve of shape 1
-* `blm1_all`: a cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 1
+* `bdy1_all`: a 1 x k cell array with each cell containing vertex indices of a boundary curve of shape 1
+* `blm1_all`: a 1 x k cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 1
 * `ilm1`: indices of interior landmarks of shape 1
-* `v2`: nv1 x 2 or 3 vertex coordinates of shape 2
-* `f2`: nf1 x 3 triangulations of shape 2
-* `bdy2_all`: a cell array with each cell containing vertex indices of a boundary curve of shape 2
-* `blm2_all`: a cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 2
+* `v2`: nv2 x 2 or 3 vertex coordinates of shape 2
+* `f2`: nf2 x 3 triangulations of shape 2
+* `bdy2_all`: a 1 x k cell array with each cell containing vertex indices of a boundary curve of shape 2
+* `blm2_all`: a 1 x k cell array with each cell containing vertex indices of boundary landmarks on the k-th boundary curve of shape 2
 * `ilm2`: indices of interior landmarks of shape 2
 
 Output:

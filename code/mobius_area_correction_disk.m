@@ -19,8 +19,8 @@ function [map_mobius_disk,x] =  mobius_area_correction_disk(v,f,map)
 %     "Parallelizable global conformal parameterization of simply-connected surfaces via partial welding."
 %     SIAM Journal on Imaging Sciences, 2020.
 %
-% Copyright (c) 2019-2020, Gary Pui-Tung Choi
-% https://scholar.harvard.edu/choi
+% Copyright (c) 2019-2026, Gary Pui-Tung Choi
+% https://www.math.cuhk.edu.hk/~ptchoi
 
 %%
 % Compute the area with normalization
@@ -37,14 +37,25 @@ area_map = @(x) face_area(f,[real((z-x(1)*exp(1i*x(2)))./(1-conj(x(1)*exp(1i*x(2
 % objective function: mean(abs(log(area_map./area_v)))
 d_area = @(x) finitemean(abs(log(area_map(x)./area_v)));
 
-% Optimization setup
-x0 = [0,0]; % initial guess, try something diferent if the result is not good
-lb = [0,0]; % lower bound for the parameters
-ub = [1,2*pi]; % upper bound for the parameters
-options = optimoptions('fmincon','Display','off','MaxIter',150);
+% OLD imeplementation
+% % Optimization setup
+% x0 = [0,0]; % initial guess, try something diferent if the result is not good
+% lb = [0,0]; % lower bound for the parameters
+% ub = [1,2*pi]; % upper bound for the parameters
+% options = optimoptions('fmincon','Display','off','MaxIter',150);
+% 
+% % Optimization (may further supply gradients for better result, not yet implemented)
+% x = fmincon(d_area,x0,[],[],[],[],lb,ub,[],options);
 
-% Optimization (may further supply gradients for better result, not yet implemented)
-x = fmincon(d_area,x0,[],[],[],[],lb,ub,[],options);
+% NEW imeplementation
+% Optimization setup
+x0 = [0,0]; % initial guess
+
+% Use optimset for fminsearch
+options = optimset('Display', 'off', 'MaxIter', 150);
+
+% Optimization using base MATLAB (NOTE: lb and ub are removed!)
+x = fminsearch(d_area, x0, options);
 
 % obtain the conformal parameterization with area distortion corrected
 fz = (z-x(1)*exp(1i*x(2)))./(1-conj(x(1)*exp(1i*x(2)))*z);

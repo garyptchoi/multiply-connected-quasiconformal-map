@@ -12,9 +12,9 @@ function map = annulus_map(v,f,bd_outer,bd_inner)
 % [1] G. P. T. Choi, 
 %     "Efficient Conformal Parameterization of Multiply-Connected Surfaces Using Quasi-Conformal Theory"
 %     Journal of Scientific Computing, 87(3), 70, 2021.
-%
-% Copyright (c) 2021, Gary P. T. Choi
-% https://math.mit.edu/~ptchoi
+% 
+% Copyright (c) 2021-2026, Gary Pui-Tung Choi
+% https://www.math.cuhk.edu.hk/~ptchoi
 
 %% slice the mesh 
 e = [f(:,[1,2]);f(:,[2,3]);f(:,[3 1])];
@@ -30,7 +30,13 @@ outer_bd_vid = bd_outer(outer_bd_vid_temp);
 % find the shortest path between the two vertices
 G = sparse(e(:,1),e(:,2),ones(ne,1),nv,nv);
 G = (G + G');
-[~, slice_path, ~] = graphshortestpath(G,inner_bd_vid,outer_bd_vid);
+
+% legacy function
+% [~, slice_path, ~] = graphshortestpath(G,inner_bd_vid,outer_bd_vid);
+
+% modern function
+G_obj = digraph(G); 
+slice_path = shortestpath(G_obj, inner_bd_vid, outer_bd_vid);
 
 % ensure no other vertices in slice_path are on the boundaries
 [~,id1,~] = intersect(slice_path,bd_inner);
